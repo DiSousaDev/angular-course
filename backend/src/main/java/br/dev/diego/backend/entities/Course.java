@@ -1,8 +1,10 @@
 package br.dev.diego.backend.entities;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "tb_course")
@@ -10,13 +12,9 @@ public class Course {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonProperty("_id")
     private Long id;
     private String name;
     private String category;
-
-    public Course() {
-    }
 
     public Long getId() {
         return id;
