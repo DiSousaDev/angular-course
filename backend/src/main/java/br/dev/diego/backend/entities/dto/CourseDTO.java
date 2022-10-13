@@ -5,14 +5,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CourseDTO {
 
     @JsonProperty("_id")
-    private final String id;
-    private final String name;
-    private final String category;
+    private String id;
+    private String name;
+    private String category;
+
+    public CourseDTO() {
+    }
 
     public CourseDTO(Course entity) {
         id = entity.getId().toString();
         name = entity.getName();
-        category = entity.getCategory();
+        category = entity.getCategory().getName();
     }
 
     public String getId() {

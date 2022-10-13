@@ -1,6 +1,9 @@
 package br.dev.diego.backend.services.impl;
 
+import br.dev.diego.backend.entities.Category;
+import br.dev.diego.backend.entities.Course;
 import br.dev.diego.backend.entities.dto.CourseDTO;
+import br.dev.diego.backend.entities.dto.CourseSaveDTO;
 import br.dev.diego.backend.repositories.CourseRepository;
 import br.dev.diego.backend.services.CourseService;
 import org.springframework.stereotype.Service;
@@ -22,5 +25,15 @@ public class CourseServiceImpl implements CourseService {
     @Transactional(readOnly = true)
     public List<CourseDTO> findAll() {
         return repository.findAll().stream().map(CourseDTO::new).collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional
+    public CourseDTO save(CourseSaveDTO entity) {
+        return new CourseDTO(repository.save(getCourse(entity)));
+    }
+
+    private Course getCourse(CourseSaveDTO entity) {
+        return new Course(entity.getName(), new Category(entity.getCategoryId()));
     }
 }
