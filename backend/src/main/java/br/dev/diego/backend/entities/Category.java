@@ -20,6 +20,9 @@ public class Category {
     @OneToMany(mappedBy = "category")
     private final List<Course> courses = new ArrayList<>();
 
+    public Category() {
+    }
+
     public Category(Long id) {
         this.id = id;
     }

@@ -20,6 +20,9 @@ public class Course {
     @JoinColumn(name = "category_id")
     private Category category;
 
+    public Course() {
+    }
+
     public Course(String name, Category category) {
         this.name = name;
         this.category = category;

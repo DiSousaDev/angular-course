@@ -6,6 +6,9 @@ public class CourseSaveDTO extends CourseDTO {
     @JsonProperty("category")
     private Long categoryId;
 
+    public CourseSaveDTO() {
+    }
+
     public Long getCategoryId() {
         return categoryId;
     }

@@ -1,0 +1,15 @@
+mat-table {
+  overflow: auto;
+  max-height: 600px;
+}
+
+.colum-id {
+  flex: 0 0 50px;
+}
+
+
+.colum-add {
+  flex: 0 0 75px;
+  align-items: center;
+  justify-content: center;
+}
