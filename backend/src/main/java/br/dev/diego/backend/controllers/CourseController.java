@@ -5,6 +5,7 @@ import br.dev.diego.backend.entities.dto.CourseSaveDTO;
 import br.dev.diego.backend.services.CourseService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +28,13 @@ public class CourseController {
     @GetMapping
     public ResponseEntity<List<CourseDTO>> findAll() {
         return ResponseEntity.ok().body(courseService.findAll());
+    }
+
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<CourseDTO> findById(@PathVariable Long id) {
+        return courseService.findById(id)
+                .map(courseDTO -> ResponseEntity.ok().body(courseDTO))
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
